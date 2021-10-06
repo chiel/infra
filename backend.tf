@@ -10,3 +10,9 @@ terraform {
     skip_credentials_validation = true
   }
 }
+
+resource "digitalocean_spaces_bucket" "kunkels_tfstate" {
+  name   = "kunkels-tfstate"
+  region = "ams3"
+  acl    = "private"
+}
