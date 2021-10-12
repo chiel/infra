@@ -9,3 +9,32 @@ resource "digitalocean_kubernetes_cluster" "main" {
     node_count = 2
   }
 }
+
+resource "kubernetes_default_service_account" "default" {
+  metadata {
+    namespace = "default"
+
+    labels = {
+      "app.kubernetes.io/managed-by" : "terraform"
+    }
+  }
+
+  automount_service_account_token = false
+}
+
+resource "kubernetes_network_policy" "default_deny_all" {
+  metadata {
+    name      = "deny-all"
+    namespace = "default"
+
+    labels = {
+      "app.kubernetes.io/managed-by" : "terraform"
+      "app.kubernetes.io/name" : "deny-all"
+    }
+  }
+
+  spec {
+    pod_selector {}
+    policy_types = ["Egress", "Ingress"]
+  }
+}
