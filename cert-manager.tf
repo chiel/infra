@@ -21,3 +21,14 @@ resource "helm_release" "cert_manager" {
     value = "true"
   }
 }
+
+resource "helm_release" "issuers" {
+  name      = "issuers"
+  chart     = "./helm/issuers"
+  namespace = helm_release.cert_manager.namespace
+
+  set {
+    name  = "email"
+    value = var.EMAIL
+  }
+}
