@@ -13,6 +13,16 @@ variable "GITHUB_TOKEN" {
   type        = string
 }
 
+variable "GRAFANA_PASSWORD" {
+  description = "Grafana password"
+  type        = string
+}
+
+variable "GRAFANA_USERNAME" {
+  description = "Grafana username"
+  type        = string
+}
+
 variable "SPACES_ACCESS_ID" {
   description = "DigitalOcean Spaces access id"
   type        = string
