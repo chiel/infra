@@ -16,3 +16,14 @@ jobs:
         with:
           terraform_version: $TERRAFORM_VERSION
       - run: terraform fmt -check -recursive
+
+  terraform-validate:
+    name: Terraform validate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: $TERRAFORM_VERSION
+      - run: terraform init -backend=false
+      - run: terraform validate
