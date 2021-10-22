@@ -10,6 +10,41 @@ resource "digitalocean_kubernetes_cluster" "main" {
   }
 }
 
+resource "kubernetes_cluster_role" "deployer" {
+  metadata {
+    name = "deployer"
+
+    labels = {
+      "app.kubernetes.io/managed-by" : "terraform"
+      "app.kubernetes.io/name" : "deployer"
+    }
+  }
+
+  rule {
+    api_groups = [""]
+    resources  = ["configmaps", "secrets", "services"]
+    verbs      = ["create", "get", "patch", "update"]
+  }
+
+  rule {
+    api_groups = ["apps"]
+    resources  = ["deployments"]
+    verbs      = ["create", "get", "patch", "update"]
+  }
+
+  rule {
+    api_groups = ["extensions"]
+    resources  = ["ingresses"]
+    verbs      = ["create", "get", "patch", "update"]
+  }
+
+  rule {
+    api_groups = ["networking.k8s.io"]
+    resources  = ["networkpolicies"]
+    verbs      = ["create", "get", "patch", "update"]
+  }
+}
+
 resource "kubernetes_default_service_account" "default" {
   metadata {
     namespace = "default"
