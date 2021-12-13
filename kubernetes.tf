@@ -33,14 +33,8 @@ resource "kubernetes_cluster_role" "deployer" {
   }
 
   rule {
-    api_groups = ["extensions"]
-    resources  = ["ingresses"]
-    verbs      = ["create", "get", "patch", "update"]
-  }
-
-  rule {
     api_groups = ["networking.k8s.io"]
-    resources  = ["networkpolicies"]
+    resources  = ["networkpolicies", "ingresses"]
     verbs      = ["create", "get", "patch", "update"]
   }
 }
