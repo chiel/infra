@@ -1,7 +1,7 @@
 resource "digitalocean_kubernetes_cluster" "main" {
   name    = "main"
   region  = "ams3"
-  version = "1.21.3-do.0"
+  version = "1.21.5-do.0"
 
   node_pool {
     name       = "main-nodes"
