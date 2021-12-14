@@ -23,6 +23,11 @@ variable "GRAFANA_USERNAME" {
   type        = string
 }
 
+variable "POSTGRES_IP_WHITELIST" {
+  description = "List of IP addresses that are allowed to access the postgres database"
+  type        = list(string)
+}
+
 variable "SITE_GHCR_TOKEN" {
   description = "GHCR.io token for personal website"
   type        = string
