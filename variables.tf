@@ -23,6 +23,16 @@ variable "GRAFANA_USERNAME" {
   type        = string
 }
 
+variable "SITE_GHCR_TOKEN" {
+  description = "GHCR.io token for personal website"
+  type        = string
+}
+
+variable "SITE_GHCR_USER" {
+  description = "GHCR.io user for personal website"
+  type        = string
+}
+
 variable "SPACES_ACCESS_ID" {
   description = "DigitalOcean Spaces access id"
   type        = string
