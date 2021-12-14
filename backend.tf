@@ -2,8 +2,8 @@ terraform {
   backend "s3" {
     # access_key and secret_key need to
     # be provided to `terraform init`
-    bucket   = "kunkels-tfstate"
-    key      = "terraform.tfstate"
+    bucket   = "kunkels"
+    key      = "tfstate/terraform.tfstate"
     endpoint = "https://ams3.digitaloceanspaces.com"
     region   = "eu-west-1"
 
@@ -11,8 +11,8 @@ terraform {
   }
 }
 
-resource "digitalocean_spaces_bucket" "kunkels_tfstate" {
-  name   = "kunkels-tfstate"
+resource "digitalocean_spaces_bucket" "kunkels" {
+  name   = "kunkels"
   region = "ams3"
   acl    = "private"
 }
