@@ -1,3 +1,13 @@
+variable "ASHESDB_GHCR_TOKEN" {
+  description = "GHCR.io token for boulder project"
+  type        = string
+}
+
+variable "ASHESDB_GHCR_USER" {
+  description = "GHCR.io user for boulder project"
+  type        = string
+}
+
 variable "DIGITALOCEAN_TOKEN" {
   description = "DigitalOcean token"
   type        = string

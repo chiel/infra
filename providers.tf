@@ -8,6 +8,12 @@ provider "github" {
   token = var.GITHUB_TOKEN
 }
 
+provider "github" {
+  alias = "ashesdb"
+  owner = "ashesdb"
+  token = var.GITHUB_TOKEN
+}
+
 locals {
   kube_config = digitalocean_kubernetes_cluster.main.kube_config[0]
   kube_host   = digitalocean_kubernetes_cluster.main.endpoint
