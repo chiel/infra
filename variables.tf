@@ -7,3 +7,8 @@ variable "DIGITALOCEAN_SPACES_SECRET_KEY" {
   description = "DigitalOcean Spaces secret key"
   type        = string
 }
+
+variable "GITHUB_TOKEN" {
+  description = "GitHub token"
+  type        = string
+}
