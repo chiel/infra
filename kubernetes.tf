@@ -11,3 +11,11 @@ resource "digitalocean_kubernetes_cluster" "default" {
     max_nodes  = 3
   }
 }
+
+resource "kubernetes_default_service_account" "default" {
+  metadata {
+    namespace = "default"
+  }
+
+  automount_service_account_token = false
+}
