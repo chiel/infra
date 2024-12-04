@@ -15,3 +15,9 @@ terraform {
     region                      = "eu-west-1"
   }
 }
+
+resource "digitalocean_spaces_bucket" "kunkels" {
+  name   = "kunkels"
+  region = "ams3"
+  acl    = "private"
+}
