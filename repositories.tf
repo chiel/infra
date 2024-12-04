@@ -11,3 +11,13 @@ resource "github_repository" "infra" {
   allow_rebase_merge     = false
   delete_branch_on_merge = true
 }
+
+resource "github_branch" "infra_main" {
+  repository = github_repository.infra.name
+  branch     = "main"
+}
+
+resource "github_branch_default" "default" {
+  repository = github_repository.infra.name
+  branch     = github_branch.infra_main.branch
+}
