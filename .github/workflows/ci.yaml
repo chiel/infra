@@ -1,0 +1,28 @@
+on:
+  push:
+    branches: ['**']
+
+env:
+  TERRAFORM_VERSION: 1.10.1
+
+jobs:
+  terraform-fmt:
+    name: Terraform fmt
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: $TERRAFORM_VERSION
+      - run: terraform fmt -check -recursive
+
+  terraform-validate:
+    name: Terraform validate
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: $TERRAFORM_VERSION
+      - run: terraform init -backend=false
+      - run: terraform validate
