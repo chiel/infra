@@ -13,6 +13,11 @@ variable "DIGITALOCEAN_TOKEN" {
   type        = string
 }
 
+variable "EMAIL" {
+  description = "My email"
+  type        = string
+}
+
 variable "GITHUB_TOKEN" {
   description = "GitHub token"
   type        = string
