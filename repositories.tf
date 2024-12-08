@@ -12,12 +12,7 @@ resource "github_repository" "infra" {
   delete_branch_on_merge = true
 }
 
-resource "github_branch" "infra_main" {
+resource "github_branch_default" "infra" {
   repository = github_repository.infra.name
   branch     = "main"
-}
-
-resource "github_branch_default" "default" {
-  repository = github_repository.infra.name
-  branch     = github_branch.infra_main.branch
 }
