@@ -22,3 +22,8 @@ variable "GITHUB_TOKEN" {
   description = "GitHub token"
   type        = string
 }
+
+variable "POSTGRES_IP_ALLOWLIST" {
+  description = ""
+  type        = list(string)
+}
