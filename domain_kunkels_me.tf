@@ -36,6 +36,6 @@ resource "digitalocean_record" "kunkels_me_txt" {
   domain = digitalocean_domain.kunkels_me.id
   type   = "TXT"
   name   = "@"
-  ttl    = 3600
+  ttl    = 1800
   value  = "v=spf1 include:_spf.google.com ~all"
 }
