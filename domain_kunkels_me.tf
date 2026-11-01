@@ -16,11 +16,8 @@ resource "digitalocean_record" "kunkels_me_ns" {
 # mx records
 resource "digitalocean_record" "kunkels_me_mx" {
   for_each = {
-    "aspmx.l.google.com."      = 1
-    "alt1.aspmx.l.google.com." = 5
-    "alt2.aspmx.l.google.com." = 5
-    "alt3.aspmx.l.google.com." = 10
-    "alt4.aspmx.l.google.com." = 10
+    "eu1-smtp.messagingengine.com." = 10
+    "eu2-smtp.messagingengine.com." = 20
   }
 
   domain   = digitalocean_domain.kunkels_me.id
@@ -31,11 +28,26 @@ resource "digitalocean_record" "kunkels_me_mx" {
   value    = each.key
 }
 
+# dkim records
+resource "digitalocean_record" "kunkels_me_dkim" {
+  for_each = {
+    "fm1._domainkey" = "fm1.kunkels.me.dkim.fmhosted.com."
+    "fm2._domainkey" = "fm2.kunkels.me.dkim.fmhosted.com."
+    "fm3._domainkey" = "fm3.kunkels.me.dkim.fmhosted.com."
+  }
+
+  domain = digitalocean_domain.kunkels_me.id
+  type   = "CNAME"
+  name   = each.key
+  ttl    = 1800
+  value  = each.value
+}
+
 # txt records
 resource "digitalocean_record" "kunkels_me_txt" {
   domain = digitalocean_domain.kunkels_me.id
   type   = "TXT"
   name   = "@"
   ttl    = 1800
-  value  = "v=spf1 include:_spf.google.com ~all"
+  value  = "v=spf1 include:spf.messagingengine.com ?all"
 }
