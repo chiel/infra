@@ -8,6 +8,20 @@ resource "kubernetes_namespace" "cert_manager" {
   }
 }
 
+resource "kubernetes_secret" "api" {
+  metadata {
+    name      = "digitalocean-api-token"
+    namespace = kubernetes_namespace.cert_manager.metadata[0].name
+    labels = {
+      "app.kubernetes.io/name" : "digitalocean-api-token"
+    }
+  }
+
+  data = {
+    token = var.DIGITALOCEAN_CERT_MANAGER_TOKEN
+  }
+}
+
 resource "helm_release" "cert_manager" {
   name       = "cert-manager"
   repository = "https://charts.jetstack.io"

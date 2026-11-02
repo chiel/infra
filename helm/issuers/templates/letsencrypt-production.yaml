@@ -12,3 +12,11 @@ spec:
       - http01:
           ingress:
             class: nginx
+      - dns01:
+          digitalocean:
+            tokenSecretRef:
+              name: digitalocean-api-token
+              key: token
+          selector:
+            dnsZones:
+              - tailtrail.app

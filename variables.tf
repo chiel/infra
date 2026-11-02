@@ -8,6 +8,11 @@ variable "DIGITALOCEAN_SPACES_SECRET_KEY" {
   type        = string
 }
 
+variable "DIGITALOCEAN_CERT_MANAGER_TOKEN" {
+  description = "DigitalOcean token for cert manager"
+  type        = string
+}
+
 variable "DIGITALOCEAN_TOKEN" {
   description = "DigitalOcean token"
   type        = string
