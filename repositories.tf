@@ -1,3 +1,22 @@
+resource "github_repository" "blackhole" {
+  name                   = "blackhole"
+  description            = "Homelab server"
+  homepage_url           = "http://blackhole"
+  visibility             = "private"
+  has_issues             = false
+  has_projects           = false
+  has_wiki               = false
+  allow_merge_commit     = true
+  allow_squash_merge     = false
+  allow_rebase_merge     = false
+  delete_branch_on_merge = true
+}
+
+resource "github_branch_default" "blackhole" {
+  repository = github_repository.blackhole.name
+  branch     = "main"
+}
+
 resource "github_repository" "infra" {
   name                   = "infra"
   description            = "Personal infra stack."
